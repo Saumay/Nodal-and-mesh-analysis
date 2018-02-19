@@ -83,11 +83,6 @@ if atype==1:
         matrix0=[[l1[0],-c_mid],[-c_mid,l1[1]]]
         matrix1=[[I1,-c_mid],[I2,l1[1]]]
         matrix2=[[l1[0],I1],[-c_mid,I2]]
-        #print(matrix0)
-        #print(matrix1)
-        #print(matrix2)
-
-#calculating node voltage
         a=det(matrix0)
         b=det(matrix1)
         c=det(matrix2)
@@ -95,8 +90,10 @@ if atype==1:
         V2=a/c
         print('\nNode 1 Voltage:',V1)
         print('Node 2 Voltage:',V2)
-
-
+	 #print(matrix0)
+        #print(matrix1)
+        #print(matrix2)
+#calculating node voltage
 
 #for 3 node system
     elif n==3:
@@ -187,7 +184,6 @@ if atype==1:
         print('\nNode 1 Voltage:',V1)
         print('Node 2 Voltage:',V2)
         print('Node 3 Voltage:',V3)
-
 
 #for 4-node system
     elif n==4:
@@ -289,11 +285,7 @@ if atype==1:
         matrix2=[[l1[0],I1,-c_13,-c_14],[-c_12,I2,-c_23,-c_24],[-c_13,I3,l1[2],-c_34],[-c_14,I4,-c_34,l1[3]]]
         matrix3=[[l1[0],-c_12,I1,-c_14],[-c_12,l1[1],I2,-c_24],[-c_13,-c_23,I3,-c_34],[-c_14,-c_24,I4,l1[3]]]
         matrix4=[[l1[0],-c_12,-c_13,I1],[-c_12,l1[1],-c_23,I2],[-c_13,-c_23,l1[2],I3],[-c_14,-c_24,-c_34,I4]]
-        #print(matrix0)
-        #print(matrix1)
-        #print(matrix2)
-        #print(matrix3)
-#calculating node voltage
+
         a=det(matrix0)
         b=det(matrix1)
         c=det(matrix2)
@@ -307,6 +299,10 @@ if atype==1:
         print('Node 2 Voltage:',V2)
         print('Node 3 Voltage:',V3)
         print('Node 4 Voltage:',V4)
-          
+	#print(matrix0)
+        #print(matrix1)
+        #print(matrix2)
+        #print(matrix3)
+#calculating node voltage
 elif atype==2:
     print(a)
