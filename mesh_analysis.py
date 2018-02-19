@@ -35,7 +35,7 @@ if atype==1:
     n=int(input('no. of nodes:'))
     i=1
     l1=[]
-#for 2 node system
+
     if n==2:
         cw=1
         while(i<=n):
@@ -66,8 +66,7 @@ if atype==1:
             #print(finalsum)
             #print(l1)
             i=i+1
-    
-#taking input of currents
+
         print('\nAT NODE 1- ')
         II=int(input('net incoming current:'))
         Io=int(input('net outgoing current:'))
@@ -83,11 +82,7 @@ if atype==1:
         matrix0=[[l1[0],-c_mid],[-c_mid,l1[1]]]
         matrix1=[[I1,-c_mid],[I2,l1[1]]]
         matrix2=[[l1[0],I1],[-c_mid,I2]]
-        #print(matrix0)
-        #print(matrix1)
-        #print(matrix2)
 
-#calculating node voltage
         a=det(matrix0)
         b=det(matrix1)
         c=det(matrix2)
@@ -309,4 +304,4 @@ if atype==1:
         print('Node 4 Voltage:',V4)
           
 elif atype==2:
-    print(a)
+    print(atype)
