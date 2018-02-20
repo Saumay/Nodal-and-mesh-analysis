@@ -27,6 +27,7 @@ def det(l):
     else:
         return(l[0][0]*l[1][1]-l[0][1]*l[1][0])
 
+
 print('Analysis type:')
 print('FOR NODAL ANALYSIS-1 \nFOR MESH ANALYSIS-2')
 atype=int(input('\nAnalysis type:'))

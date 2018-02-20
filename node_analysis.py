@@ -55,7 +55,6 @@ if atype==1:
             for j in range(1,r):
                 print('r',j,':')
                 rnode=int(input())
-#solving in terms of conductances
                 if rnode==0:
                     c=0
                 else:
@@ -63,11 +62,8 @@ if atype==1:
                 sum=sum+c
                 finalsum=sum+c_mid
             l1.append(finalsum)
-            #print(finalsum)
-            #print(l1)
             i=i+1
-    
-#taking input of currents
+
         print('\nAT NODE 1- ')
         II=int(input('net incoming current:'))
         Io=int(input('net outgoing current:'))
@@ -90,9 +86,6 @@ if atype==1:
         V2=a/c
         print('\nNode 1 Voltage:',V1)
         print('Node 2 Voltage:',V2)
-	 #print(matrix0)
-        #print(matrix1)
-        #print(matrix2)
 #calculating node voltage
 
 #for 3 node system
