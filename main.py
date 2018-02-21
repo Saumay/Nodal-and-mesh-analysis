@@ -346,18 +346,20 @@ if atype==1:
         print('Node 4 Voltage:',V4,'V')
 
 elif atype==2:    
-    print ("MESH ANALYSIS\nNote TYPE=1,2,3")    
-    ch=int(input("Enter type:"))
+    print ("MESH ANALYSIS\n")    
+    ch=int(input("No. of meshes(2 or 3):"))
+    if ch==3:
+        chx=input('Circuit Type(a or b):')
     r=[]
     V=[]
     a=1
-    if ch==1:
+    if ch==2:
         l=14
         a1=7
-    elif ch==2:
+    elif chx=='a':
         l=15
         a1=9
-    elif ch==3:
+    elif chx=='b':
         l=19
         a1=10
     for i in range(1,l):
@@ -369,18 +371,18 @@ elif atype==2:
             print('V',i-a1,':')
             V.append(float(input()))
 
-    if ch==1:
+    if ch==2:
         d=[[r[0]+r[1]+r[2]+r[6],-r[6]],[-r[6],r[3]+r[4]+r[5]+r[6]]]
         d1=[[V[0]+V[1]+V[2],-r[6]],[V[3]+V[4]+V[5],r[3]+r[4]+r[5]+r[6]]]
         d2=[[r[0]+r[1]+r[2]+r[6],V[0]+V[1]+V[2]],[-r[6],V[3]+V[4]+V[5]]]
         print ("Ï1=",(format((det(d1)/det(d)),'.4f',)),"A\nI2=",(format((det(d2)/det(d)), '.4f')),"A")
-    elif ch==2:
+    elif chx=='a':
         d=[[r[0]+r[1]+r[2]+r[3],-r[6],-r[7]],[-r[6],r[2]+r[6]+r[3]+r[8],-r[8]],[-r[7],-r[8],r[4]+r[7]+r[8]+r[5]]]
         d1=[[V[0]+V[1],-r[6],-r[7]],[V[2]+V[3],r[2]+r[6]+r[3]+r[8],-r[8]],[V[4],-r[8],r[4]+r[7]+r[8]+r[5]]]
         d2=[[r[0]+r[1]+r[2]+r[3],V[0]+V[1],-r[7]],[-r[6],V[2]+V[3],-r[8]],[-r[7],V[4],r[4]+r[7]+r[8]+r[5]]]
         d3=[[r[0]+r[1]+r[2]+r[3],-r[6],V[0]+V[1]],[-r[6],r[2]+r[6]+r[3]+r[8],V[2]+V[3]],[-r[7],-r[8],V[4]]]
         print( "Ï1=",(format((det(d1)/det(d)),'.4f')),"A\nI2=",(format((det(d2)/det(d)), '.4f')),"A\nI3=",(format((det(d3)/det(d)), '.4f')),"A")
-    elif ch==3 :
+    elif chx=='b':
         d=[[r[0]+r[1]+r[2]+r[8],-r[8],0],[-r[8],r[3]+r[9]+r[8]+r[4],-r[9]],[0,-r[9],r[5]+r[6]+r[7]+r[9]]]
         d1=[[V[0]+V[1]+V[2],-r[8],0],[V[3]+V[4],r[3]+r[9]+r[8]+r[4],-r[9]],[V[5]+V[6]+V[7],-r[9],r[5]+r[6]+r[7]+r[9]]]
         d2=[[r[0]+r[1]+r[2]+r[8],V[0]+V[1]+V[2],0],[-r[8],V[3]+V[4],-r[9]],[0,V[5]+V[6]+V[7],r[5]+r[6]+r[7]+r[9]]]
