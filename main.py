@@ -1,4 +1,4 @@
-# coding=utf-8
+#coding=utf-8
 #determinant of matrix
 def det(l):
     n=len(l)
@@ -36,12 +36,17 @@ if atype==1:
     n=int(input('no. of nodes:'))
     i=1
     l1=[]
+    if n==1:
+      ii=float(input('\nCurrent flowing through the circuit='))
+      rr=float(input('net resistance connected between node and neutral='))
+      vv=ii*rr
+      print('Voltage at node:',vv)
 #for 2 node system
     if n==2:
         cw=1
         while(i<=n):
             print('\nFOR NODE',i,'-')
-            print('total no. of resistors connected to node',i,'-',)
+            print('total no. of resistors connected to node ',i,'=',)
             r=int(input())
             if r==0:
                 finalsum=0
@@ -100,8 +105,8 @@ if atype==1:
         a=det(matrix0)
         b=det(matrix1)
         c=det(matrix2)
-        V1=a/b
-        V2=a/c
+        V1=b/a
+        V2=c/a
         print('\nNode 1 Voltage:',V1,'V')
         print('Node 2 Voltage:',V2,'V')
 
@@ -347,19 +352,26 @@ if atype==1:
 
 elif atype==2:    
     print ("MESH ANALYSIS\n")    
-    ch=int(input("No. of meshes(2 or 3):"))
+    ch=int(input("No. of meshes(1,2 or 3):"))
+    chx='C'
+    if ch==1:
+        v=float(input('Net Voltage:'))
+        R=float(input('Net resistance:'))
+        i=v/R
+        l=1
+        print('Current in circuit:',i)
     if ch==3:
-        chx=input('Circuit Type(a or b):')
+       chx=input('Circuit Type(a or b):')
     r=[]
     V=[]
     a=1
     if ch==2:
         l=14
         a1=7
-    elif chx=='a':
+    elif chx=='b':
         l=15
         a1=9
-    elif chx=='b':
+    elif chx=='a':
         l=19
         a1=10
     for i in range(1,l):
@@ -376,13 +388,13 @@ elif atype==2:
         d1=[[V[0]+V[1]+V[2],-r[6]],[V[3]+V[4]+V[5],r[3]+r[4]+r[5]+r[6]]]
         d2=[[r[0]+r[1]+r[2]+r[6],V[0]+V[1]+V[2]],[-r[6],V[3]+V[4]+V[5]]]
         print ("Ï1=",(format((det(d1)/det(d)),'.4f',)),"A\nI2=",(format((det(d2)/det(d)), '.4f')),"A")
-    elif chx=='a':
+    elif chx=='b':
         d=[[r[0]+r[1]+r[2]+r[3],-r[6],-r[7]],[-r[6],r[2]+r[6]+r[3]+r[8],-r[8]],[-r[7],-r[8],r[4]+r[7]+r[8]+r[5]]]
         d1=[[V[0]+V[1],-r[6],-r[7]],[V[2]+V[3],r[2]+r[6]+r[3]+r[8],-r[8]],[V[4],-r[8],r[4]+r[7]+r[8]+r[5]]]
         d2=[[r[0]+r[1]+r[2]+r[3],V[0]+V[1],-r[7]],[-r[6],V[2]+V[3],-r[8]],[-r[7],V[4],r[4]+r[7]+r[8]+r[5]]]
         d3=[[r[0]+r[1]+r[2]+r[3],-r[6],V[0]+V[1]],[-r[6],r[2]+r[6]+r[3]+r[8],V[2]+V[3]],[-r[7],-r[8],V[4]]]
         print( "Ï1=",(format((det(d1)/det(d)),'.4f')),"A\nI2=",(format((det(d2)/det(d)), '.4f')),"A\nI3=",(format((det(d3)/det(d)), '.4f')),"A")
-    elif chx=='b':
+    elif chx=='a':
         d=[[r[0]+r[1]+r[2]+r[8],-r[8],0],[-r[8],r[3]+r[9]+r[8]+r[4],-r[9]],[0,-r[9],r[5]+r[6]+r[7]+r[9]]]
         d1=[[V[0]+V[1]+V[2],-r[8],0],[V[3]+V[4],r[3]+r[9]+r[8]+r[4],-r[9]],[V[5]+V[6]+V[7],-r[9],r[5]+r[6]+r[7]+r[9]]]
         d2=[[r[0]+r[1]+r[2]+r[8],V[0]+V[1]+V[2],0],[-r[8],V[3]+V[4],-r[9]],[0,V[5]+V[6]+V[7],r[5]+r[6]+r[7]+r[9]]]
@@ -390,3 +402,4 @@ elif atype==2:
         print( "Ï1=",(format((det(d1)/det(d)),'.4f',)),"A\nI2=",(format((det(d2)/det(d)), '.4f')),"A\nI3=",(format((det(d3)/det(d)), '.4f')),"A")
 else:
     print("ERROR , PLEASE ENTER CHOICE CORRECTLY ie 1 for nodal and 2 for mesh")
+
